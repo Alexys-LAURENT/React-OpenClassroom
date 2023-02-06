@@ -1,7 +1,8 @@
 .lmj-plant-item-cover {
-    height: 220px;
-    width: 220px;
+    height: 250px;
+    width: 250px;
     border-radius: 20px;
+    object-fit: cover;
 }
 
 .lmj-plant-item {
@@ -11,4 +12,21 @@
     justify-content: center;
     flex-direction: column;
     text-transform: capitalize;
+    position: relative;
+}
+
+.lmj-plant-item-solde {
+    background-color: rgb(81, 138, 77);
+    width: 60px;
+    height: 30px;
+    position: absolute;
+    top: 17px;
+    right: 0px;
+    color: white;
+}
+
+.lmj-plant-item-solde p {
+    position: relative;
+    top: -12px;
+    right: -6px;
 }
