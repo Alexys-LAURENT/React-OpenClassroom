@@ -1,16 +1,9 @@
 import { plantList } from '../datas/plantList'
 import '../styles/ShoppingList.css'
 import PlantItem from './PlantItem';
-// const categories = [];
+import Categorie from './Categorie';
 
-// plantList.forEach((item) => {
-//     if (!categories.includes(item.category)) {
-//         categories.push(item.category)
-//     }
-// })
-
-
-function ShoppingList({ cart, updateCart }) {
+function ShoppingList({ cart, updateCart, categorieDisplay, updateCategorieDisplay }) {
 
     function addToCart(name, price) {
         const currentPlantAdded = cart.find((plant) => plant.name === name) //on regarde si la plante ajouté existe déjà dans le panier
@@ -27,28 +20,28 @@ function ShoppingList({ cart, updateCart }) {
         }
     }
 
+
+
     return (
         <div>
-            {/* <ul>
-                {categories.map((uneCategorie) => (
-                    <li key={uneCategorie}>{uneCategorie}</li>
-                ))}
-            </ul> */}
+            <Categorie categorieDisplay={categorieDisplay} updateCategorieDisplay={updateCategorieDisplay} />
             <ul className='lmj-plant-list'>
-                {plantList.map(({ id, cover, name, water, light, isSpecialOffer, price }) => (
-                    <div>
-                        <PlantItem
-                            id={id}
-                            cover={cover}
-                            name={name}
-                            water={water}
-                            light={light}
-                            isSpecialOffer={isSpecialOffer}
-                            price={price}
-                        />
-                        <button onClick={() => addToCart(name, price)}>Ajouter au panier</button>
-                    </div>
-                ))}
+                {plantList.map(({ id, cover, name, water, light, isSpecialOffer, price, category }) =>
+                    !categorieDisplay || categorieDisplay === category ? (
+                        <div>
+                            <PlantItem
+                                id={id}
+                                cover={cover}
+                                name={name}
+                                water={water}
+                                light={light}
+                                isSpecialOffer={isSpecialOffer}
+                                price={price}
+                            />
+                            <button onClick={() => addToCart(name, price)}>Ajouter au panier</button>
+                        </div>
+                    ) : null
+                )}
             </ul>
         </div>
     )

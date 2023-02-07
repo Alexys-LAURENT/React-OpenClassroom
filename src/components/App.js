@@ -8,6 +8,7 @@ import logo from '../assets/logo.png'
 
 function App() {
   const [cart, updateCart] = useState([]);
+  const [categorieDisplay, updateCategorieDisplay] = useState("");
   return <div>
     <Banner>
       <img src={logo} alt='La maison jungle' className='lmj-logo' />
@@ -15,7 +16,7 @@ function App() {
     </Banner>
     <div className='lmj-layout-inner'>
       <Cart cart={cart} updateCart={updateCart} />
-      <ShoppingList cart={cart} updateCart={updateCart} />
+      <ShoppingList cart={cart} updateCart={updateCart} categorieDisplay={categorieDisplay} updateCategorieDisplay={updateCategorieDisplay} />
     </div>
     <Footer />
   </div>
