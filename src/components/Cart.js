@@ -23,15 +23,33 @@ function Cart({ cart, updateCart }) {
     }, [cart])
 
 
-    function deleteOneElementFromCart(name) {
+    function deleteOneElementFromCart(e, name) {
+        const indexOfElement = cart.findIndex((plant) => plant.name === name)
         const cartFiltered = cart.filter((plant) => plant.name !== name)
         const elementToModify = cart.filter((plant) => plant.name === name)
 
         if (elementToModify[0].amount === 1) {
-            updateCart(cartFiltered)
+            //check if the parent node is a svg
+            if (e.target.parentNode.nodeName === "svg") {
+                e.target.parentNode.parentNode.parentNode.style.animation = "pop 0.5s ease-in-out forwards"
+            } else if (e.target.parentNode.className !== "deleteBtn") { //check if the parent node is a div.deleteBtn
+                e.target.parentNode.parentNode.style.animation = "pop 0.5s ease-in-out forwards"
+            } else if (e.target.parentNode.parentNode.className === "cart-item") { //check if the parent node is a div.cart-item
+                e.target.parentNode.parentNode.style.animation = "pop 0.5s ease-in-out forwards"
+            }
+            setTimeout(() => {
+                updateCart(cartFiltered)
+            }, 500);
         } else {
-            elementToModify[0].amount = elementToModify[0].amount - 1
-            const updatedCart = cartFiltered.concat(elementToModify)
+            const updatedCart = cart.map((plant, index) => {
+                if (index === indexOfElement) {
+                    return {
+                        ...plant,
+                        amount: plant.amount - 1
+                    }
+                }
+                return plant
+            })
             updateCart(updatedCart)
         }
     }
@@ -56,9 +74,9 @@ function Cart({ cart, updateCart }) {
                 <div className='cartContent'>
                     <h2>Panier</h2>
                     {cart[0] ? cart.map(({ name, price, amount }, index) => (
-                        <div className='text-align-center' key={`${name}-${index}`}>
+                        <div className='cart-item' key={`${name}-${index}`}>
                             {name} {price}€ x {amount}
-                            <div className='deleteBtn' onClick={() => deleteOneElementFromCart(name)}>
+                            <div className='deleteBtn' onClick={(e) => deleteOneElementFromCart(e, name)}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
                                 </svg>

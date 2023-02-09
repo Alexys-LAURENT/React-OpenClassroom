@@ -71,12 +71,12 @@
     transform: rotate(180deg);
 }
 
-.cartContent .text-align-center:first-child {
+.cartContent .cart-item:first-child {
     margin-top: 90px;
     background-color: red !important;
 }
 
-.text-align-center {
+.cart-item {
     background-color: white;
     color: black;
     text-align: center;
@@ -87,7 +87,6 @@
     margin-top: 20px;
 }
 
-
 .deleteBtn {
     position: relative;
     top: 2px;
@@ -95,4 +94,20 @@
     margin-left: 5px;
     color: red;
     cursor: pointer;
+}
+
+/* make a animation that pop the cart-item */
+
+/* .cart-item {
+    animation: pop 0.5s ease-in-out infinite;
+} */
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
 }
