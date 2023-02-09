@@ -1,4 +1,5 @@
 import { plantList } from '../datas/plantList'
+import "../styles/Categorie.css"
 
 function Categorie({ categorieDisplay, updateCategorieDisplay }) {
 
@@ -13,9 +14,9 @@ function Categorie({ categorieDisplay, updateCategorieDisplay }) {
 
 
     return (
-        <div>
+        <div className='filterContainer'>
             <h3>Filtrer par catégorie :</h3>
-            <select onChange={(e) => updateCategorieDisplay(e.target.value)}>
+            <select onChange={(e) => updateCategorieDisplay(e.target.value)} className="selectCategorie">
                 <option value="" >Toutes</option>
                 {categories.map((uneCategorie) => (
                     <option key={uneCategorie}>{uneCategorie}</option>

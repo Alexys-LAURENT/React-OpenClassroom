@@ -1,0 +1,22 @@
+.selectCategorie {
+    width: 70%;
+    height: 100%;
+    background-color: #f5f5f5;
+    border-radius: 0px;
+    padding: 10px;
+    background-color: #ffffff;
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+
+.filterContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: center;
+    margin-left: 32px;
+    margin-top: 20px;
+}

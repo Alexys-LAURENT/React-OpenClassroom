@@ -9,3 +9,29 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.CardPlant {
+    position: relative;
+}
+
+.btnAddToCart {
+    position: absolute;
+    right: 20px;
+    bottom: 30px;
+    height: 35px;
+    width: 35px;
+    border-radius: 60px;
+    border: 2px solid rgb(193, 68, 81);
+    background-color: rgb(208, 98, 109);
+}
+
+.btnAddToCart:hover {
+    cursor: pointer;
+    scale: 1.1;
+}
+
+.btnAddToCart svg {
+    position: relative;
+    top: 2px;
+    filter: invert(1);
+}
