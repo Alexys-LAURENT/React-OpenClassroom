@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/Cart.css'
 
 function Cart({ cart, updateCart }) {
