@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useState, useEffect } from 'react';
 import '../styles/Cart.css'
 
 function Cart({ cart, updateCart }) {
@@ -18,6 +17,10 @@ function Cart({ cart, updateCart }) {
     useEffect(() => {
         document.title = `LMJ : ${total}€`
     }, [total])
+
+    useEffect(() => {
+        localStorage.setItem("cartSaved", JSON.stringify(cart))
+    }, [cart])
 
 
     function deleteOneElementFromCart(name) {
