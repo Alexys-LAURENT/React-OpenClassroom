@@ -7,8 +7,13 @@ import '../styles/Layout.css'
 import logo from '../assets/logo.png'
 
 function App() {
-  const [cart, updateCart] = useState([]);
+
+  const [cart, updateCart] = useState(localStorage["cartSaved"] ? JSON.parse(localStorage.getItem("cartSaved")) : []);
   const [categorieDisplay, updateCategorieDisplay] = useState("");
+
+
+
+
   return <div>
     <Banner>
       <img src={logo} alt='La maison jungle' className='lmj-logo' />

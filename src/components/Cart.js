@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/Cart.css'
 
 function Cart({ cart, updateCart }) {
@@ -7,6 +7,12 @@ function Cart({ cart, updateCart }) {
         (acc, plantType) => acc + plantType.amount * plantType.price,
         0
     )
+
+
+
+    useEffect(() => {
+        localStorage.setItem("cartSaved", JSON.stringify(cart))
+    }, [cart])
 
     function deleteOneElementFromCart(name) {
         const cartFiltered = cart.filter((plant) => plant.name !== name)
@@ -20,6 +26,8 @@ function Cart({ cart, updateCart }) {
             updateCart(updatedCart)
         }
     }
+
+
 
     return isOpen ? (
         <div className='lmj-cart'>
